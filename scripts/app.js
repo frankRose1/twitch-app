@@ -15,4 +15,14 @@ $(document).ready(function(){
 		});
 	}
 
-});
+	//smooth scroll
+	$('a.down-arr').on('click', function(e){
+		e.preventDefault();
+		const target = $(this.hash);
+		
+		$('html, body').stop().animate({
+			scrollTop: target.offset().top -60
+		}, 750);
+	});
+
+}); //end doc ready
