@@ -111,7 +111,7 @@ i {
     border: 2px solid var(--twitchPurp);
 } */
 
-.logo{
+.streamer-logo{
     border-radius:  50%;
     background-color: green;
     height: 150px;
@@ -129,4 +129,12 @@ i {
     line-height:  23px;
     font-weight: bold;
     margin-bottom: 40px;
+}
+
+/* FOOTER START */
+
+footer{
+    padding:  80px;
+    color:  #fff;
+    background-color: #36454f ;
 }
