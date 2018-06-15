@@ -44,6 +44,7 @@ $(document).ready(function(){
 		const logo = streamer.stream.channel.logo;
 		const name = streamer.stream.channel.display_name;
 		const status = streamer.stream.channel.status;
+		const id = streamer.stream._id;
 
 		const newGridItem = $(`<div class="grid-item">
 	                    			<img src="${logo}" alt="Streamer Logo" class="streamer-logo">
@@ -52,7 +53,7 @@ $(document).ready(function(){
 	                        			<p class="status">${status}</p>
 	                    			</div>
          						</div>`);
-		newGridItem.data('id', streamer._id);
+		newGridItem.data('id', id);
 		$('#grid').append(newGridItem);
 	}
 
@@ -60,6 +61,13 @@ $(document).ready(function(){
 	function handleError(err){
 		console.log(err);
 	}
+
+	function showModal(e){
+		console.log( $(e.target).data('id') );
+	}
+
+	//use event delegation for the grid items
+	$('#grid').on('click', 'div.grid-item', showModal)
 
 	//smooth scroll
 	$('a.down-arr').on('click', function(e){
