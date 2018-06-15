@@ -1,10 +1,4 @@
-//get JSON from twitch API
-	//set up functions to handle the data
-		//update the grid items
-		//change styles based on channel status
-			//starter info needed: 
-				//channel logo, channel name, status
-				//"https://api.twitch.tv/kraken/streams?channel=streamer1,streamer2,streamer3,streamer4&client_id=<<your client ID>>"
+
 $(document).ready(function(){
 
 	const $gridItem = ('.grid-item');
@@ -42,14 +36,14 @@ $(document).ready(function(){
 	function updateDOM(streamer){
 		//create a grid item for each stream response
 		const logo = streamer.stream.channel.logo;
-		const name = streamer.stream.channel.display_name;
+		const title = streamer.stream.channel.display_name;
 		const status = streamer.stream.channel.status;
-		const id = streamer.stream._id;
+		const id = streamer.stream.channel.name;
 
 		const newGridItem = $(`<div class="grid-item">
 	                    			<img src="${logo}" alt="Streamer Logo" class="streamer-logo">
 	                    			<div class="channel-info">
-	                        			<h3 class="name">${name}</h3>
+	                        			<h3 class="name">${title}</h3>
 	                        			<p class="status">${status}</p>
 	                    			</div>
          						</div>`);
@@ -62,12 +56,36 @@ $(document).ready(function(){
 		console.log(err);
 	}
 
-	function showModal(e){
-		console.log( $(e.target).data('id') );
+	//api using the stream's id
+	function getStream(){
+		const id = $(this).data('id');
+		$.ajax({
+			method: 'GET',
+			url: `https://api.twitch.tv/kraken/channels/${id}`,
+			headers: {
+				'Client-ID': 'mnjxuz1js2d8ix4azjyvpa656pi5w9'
+			},
+			success: showModal,
+			fail: handleError
+		});
+		console.log( $(this).data('id'), id );
 	}
 
-	//use event delegation for the grid items
-	$('#grid').on('click', 'div.grid-item', showModal)
+	//show the modal and fill it with data from the api response
+	function showModal(data){
+		console.log(data);
+		$('.overlay').show();
+		$('.modal').fadeIn(1000);
+	} 
+
+	function hideModal(){
+		//if e.target = overlay || X then close the modal and hide the overlay
+		$('.modal').fadeOut(1000);
+		$('.overlay').hide();
+	} 
+
+	//make an api call using the stream id
+	$('#grid').on('click', 'div.grid-item', getStream);
 
 	//smooth scroll
 	$('a.down-arr').on('click', function(e){
