@@ -1,18 +1,6 @@
-
 $(document).ready(function(){
-
 	const $gridItem = ('.grid-item');
 
-// $.ajax({
-// 	 type: 'GET',
-// 	 url: 'https://api.twitch.tv/kraken/channels/twitch',
-// 	 headers: {
-// 	   'Client-ID': 'axjhfp777tflhy0yjb5sftsil'
-// 	 },
-// 	 success: function(data) {
-// 	   console.log(data);
-// 	 }
-// }); 
 	function getData(){
 		$.ajax({
 			type: 'GET',
@@ -79,6 +67,16 @@ $(document).ready(function(){
 		$('.banner-img').attr('src', data.video_banner); //set the banenr image
 		$('.modal-logo').attr('src', data.logo);
 		$('.modal-title').text(data.display_name);
+		//cols
+			
+		$('.views').text(data.views);
+		$('.followers').text(data.followers);
+		data.mature ? $('.audience').text('For Mature Audiences') : $('.audience').text('For All Audiences') ;
+		
+		$('.twitch-link').attr('href', data.url);
+		$('.playing').text(data.game);
+		data.partner ? $('.partner').text("Twitch Partner") : $('.partner').text("Follow me on Twitch to help me get partnered!");
+			//data.mature -> boolean
 		//show the modal
 		$('.overlay').show();
 		$('.modal').fadeIn(1000);

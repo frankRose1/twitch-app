@@ -164,7 +164,7 @@ i {
 }
 
 .streamer-info, .banner {
-    flex-basis: 50%;
+    flex:1 1 50%;
 }
 
 .banner {
@@ -201,6 +201,7 @@ i {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .modal-logo {
