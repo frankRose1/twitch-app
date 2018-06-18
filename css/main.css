@@ -148,17 +148,15 @@ i {
 
 .modal{
     display: none;
-    /* will set display flex with JS */
     justify-content: center;
     align-items:center;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform:  translateX(-50%);
-    background-color: lightgreen;
-    height: 500px;
-    width: 400px;
+    transform:  translate(-50%, -50%);
+    height: 550px;
+    width: 600px;
     z-index: 10;
     border-radius: 5px;
 }
@@ -202,12 +200,15 @@ i {
     align-items: center;
     justify-content: center;
     width: 100%;
+    background-color: var(--twitchPurp);
+    color: #fff;
 }
 
 .modal-logo {
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    margin-right: 20px;
 }
 
 .modal-title {

@@ -64,21 +64,22 @@ $(document).ready(function(){
 		$('.modal').css('display', 'flex');
 		//fill the modal with data
 		console.log(data);
-		$('.banner-img').attr('src', data.video_banner); //set the banenr image
+		$('.banner-img').attr('src', `${data.video_banner} || ${data.logo}`); //set the banenr image
 		$('.modal-logo').attr('src', data.logo);
 		$('.modal-title').text(data.display_name);
-		//cols
-			
+
 		$('.views').text(data.views);
 		$('.followers').text(data.followers);
-		data.mature ? $('.audience').text('For Mature Audiences') : $('.audience').text('For All Audiences') ;
+		data.mature ? $('.audience').text('For Mature Audiences') : $('.audience').text('For All Audiences');
 		
 		$('.twitch-link').attr('href', data.url);
 		$('.playing').text(data.game);
 		data.partner ? $('.partner').text("Twitch Partner") : $('.partner').text("Follow me on Twitch to help me get partnered!");
-			//data.mature -> boolean
 		//show the modal
 		$('.overlay').show();
+		
+		const modalTop = (window.scrollY + window.innerHeight) - ($('.modal').css('height') / 2);
+		$('.modal').css('top', modalTop);
 		$('.modal').fadeIn(1000);
 	} 
 
