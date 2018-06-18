@@ -115,7 +115,6 @@ i {
 
 .streamer-logo{
     border-radius:  50%;
-    background-color: green;
     height: 150px;
     width:  150px;
 }
@@ -155,7 +154,7 @@ i {
     top: 50%;
     left: 50%;
     transform:  translate(-50%, -50%);
-    height: 550px;
+    max-height: calc(100%-100px);
     width: 600px;
     z-index: 10;
     border-radius: 5px;
@@ -175,7 +174,7 @@ i {
     right: 15px;
     top: 15px;
     color: #ff1919;
-    font-size: 22px;
+    font-size: 26px;
     opacity: 0.7;
     cursor: pointer;
     transition: opacity 0.5s ease-in-out;
@@ -221,6 +220,8 @@ i {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    width: 100%;
+    margin-top: 25px;
 }
 
 .modal-col {
@@ -228,6 +229,36 @@ i {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.modal-col h4{
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 15px
+}
+
+.modal-col p {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.twitch-link {
+    color: var(--twitchPurp);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 8px 14px;
+    background-color: #fff;
+    border-radius: 5px;
+    transform: scale(.95);
+    transition: padding 0.5s ease-in-out,
+                font-size 0.5s ease-in-out;
+}
+
+.twitch-link:hover {
+    padding: 9px 14px;
+    font-size: 22px;
 }
 
 /* FOOTER START */
