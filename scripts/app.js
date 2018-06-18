@@ -73,19 +73,28 @@ $(document).ready(function(){
 
 	//show the modal and fill it with data from the api response
 	function showModal(data){
+		$('.modal').css('display', 'flex');
+		//fill the modal with data
 		console.log(data);
+		$('.banner-img').attr('src', data.video_banner); //set the banenr image
+		$('.modal-logo').attr('src', data.logo);
+		$('.modal-title').text(data.display_name);
+		//show the modal
 		$('.overlay').show();
 		$('.modal').fadeIn(1000);
 	} 
 
-	function hideModal(){
+	function hideModal(e){
 		//if e.target = overlay || X then close the modal and hide the overlay
+		e.stopPropagation();//so that it doesnt trigger other events
 		$('.modal').fadeOut(1000);
 		$('.overlay').hide();
+	
 	} 
 
-	//make an api call using the stream id
-	$('#grid').on('click', 'div.grid-item', getStream);
+	$('#grid').on('click', 'div.grid-item', getStream); //make a get request using the stream id
+	$('.overlay').on('click', hideModal);
+	$('.close').on('click', hideModal);
 
 	//smooth scroll
 	$('a.down-arr').on('click', function(e){

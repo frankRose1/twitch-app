@@ -147,7 +147,11 @@ i {
 }
 
 .modal{
-    display:  none;
+    display: none;
+    /* will set display flex with JS */
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -156,6 +160,72 @@ i {
     height: 500px;
     width: 400px;
     z-index: 10;
+    border-radius: 5px;
+}
+
+.streamer-info, .banner {
+    flex-basis: 50%;
+}
+
+.banner {
+    position: relative;
+    align-self: flex-start;
+}
+
+.close {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    color: #ff1919;
+    font-size: 22px;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+.modal-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.banner-img {
+    width: 100%;
+}
+
+.streamer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.modal-title {
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.modal-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.modal-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* FOOTER START */
