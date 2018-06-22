@@ -32,7 +32,7 @@ $(document).ready(function(){
 	                    			<img src="${logo}" alt="Streamer Logo" class="streamer-logo">
 	                    			<div class="channel-info">
 	                        			<h3 class="name">${title}</h3>
-	                        			<p class="status">${status}</p>
+	                        			<p class="status">${trimString(status)}</p>
 	                    			</div>
          						</div>`);
 		newGridItem.data('id', id);
@@ -42,6 +42,16 @@ $(document).ready(function(){
 	//use this to display an error in the DOM
 	function handleError(err){
 		console.log(err);
+	}
+
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	  }
+
+	function trimString(str){
+		const dots = '...';
+		const subString = str.substr(0,60);
+		return `${subString}${dots}`;
 	}
 
 	//api using the stream's id
@@ -68,8 +78,8 @@ $(document).ready(function(){
 		$('.modal-logo').attr('src', data.logo);
 		$('.modal-title').text(data.display_name);
 
-		$('.views').text(data.views);
-		$('.followers').text(data.followers);
+		$('.views').text(numberWithCommas(data.views));
+		$('.followers').text(numberWithCommas(data.followers));
 		data.mature ? $('.audience').text('For Mature Audiences') : $('.audience').text('For All Audiences');
 		
 		$('.twitch-link').attr('href', data.url);

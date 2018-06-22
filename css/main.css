@@ -268,3 +268,30 @@ footer{
     color:  #fff;
     background-color: #36454f ;
 }
+
+/* MEDIA QUERIES */
+
+@media (max-width : 1200px) {
+    .grid-item {
+        width:40%;
+    }
+}
+
+@media (max-width : 860px) {
+    .grid-item {
+        width: 70%;
+        height: 300px;
+    }
+}
+
+@media (max-width : 550px) {
+    .grid-item {
+        flex-direction: column;
+        height: 350px;
+    }
+
+    .sub-title {
+        font-size: 30px;
+        line-height: 35px;
+    }
+}
