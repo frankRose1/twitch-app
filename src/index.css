@@ -1,3 +1,53 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*START MAIN STYLES*/
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 :root{
@@ -26,7 +76,7 @@ body {
 /* TOP SECTION */
 #top{
     height: 100vh;
-    background: linear-gradient( rgba(75,54,124,0.4),rgba(75,54,124,0.4) ),  url(../img/gaming.jpg);
+    background: linear-gradient( rgba(75,54,124,0.4),rgba(75,54,124,0.4) ),  url(/img/gaming.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -45,23 +95,22 @@ h1 {
 }
 
 .arrow {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  margin-left:-20px;
-  animation: bounce 1s infinite;
-  
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left:-20px;
+	animation: bounce 1s infinite;
 }
 
 @keyframes bounce {
-  0%       { bottom:5px; }
-  25%, 75% { bottom:15px; }
-  50%      { bottom:20px; }
-  100%     {bottom:0;}
+	0%       { bottom:5px; }
+	25%, 75% { bottom:15px; }
+	50%      { bottom:20px; }
+	100%     {bottom:0;}
 }
 i {
-  font-size:  40px;
-  color:  #fff;
+	font-size:  40px;
+	color:  #fff;
 }
 
 /* CONTENT SECTION */
@@ -99,6 +148,7 @@ i {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    overflow: hidden;
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 5px 7px #888888;
@@ -148,7 +198,7 @@ i {
 }
 
 .modal{
-    display: none;
+	display: flex;
     justify-content: center;
     align-items:center;
     flex-direction: column;
@@ -157,9 +207,32 @@ i {
     left: 50%;
     transform:  translate(-50%, -50%);
     max-height: calc(100%-100px);
-    width: 600px;
-    z-index: 10;
-    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    z-index: 150;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px #fff;
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.modal.hide {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.overlay {
+    display: block;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right:0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.9);
 }
 
 .streamer-info, .banner {
@@ -294,6 +367,68 @@ footer{
 }
 .icon-list i:hover {
     color: #9975b9;
+}
+
+/* lOADING ANIMATION */
+.loader,
+.loader:before,
+.loader:after {
+	background: var(--twitchPurp);
+	-webkit-animation: load1 1s infinite ease-in-out;
+	animation: load1 1s infinite ease-in-out;
+	width: 1em;
+	height: 4em;
+}
+.loader {
+	color:  var(--twitchPurp);
+	text-indent: -9999em;
+	margin: 88px auto;
+	position: relative;
+	font-size: 11px;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+	position: absolute;
+	top: 0;
+	content: '';
+}
+.loader:before {
+	left: -1.5em;
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+.loader:after {
+	left: 1.5em;
+}
+
+@-webkit-keyframes load1 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 -2em;
+		height: 5em;
+	}
+}
+@keyframes load1 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 -2em;
+		height: 5em;
+	}
 }
 
 /* MEDIA QUERIES */
