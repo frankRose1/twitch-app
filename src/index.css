@@ -332,7 +332,7 @@ i {
 }
 
 .twitch-link:hover {
-    padding: 9px 14px;
+    padding: 8.5px 14px;
     font-size: 22px;
 }
 
@@ -441,7 +441,7 @@ footer{
 
 @media (max-width : 860px) {
     .grid-item {
-        width: 70%;
+        width: 85%;
         height: 300px;
     }
 
