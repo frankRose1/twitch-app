@@ -12,7 +12,7 @@ const Grid = props => {
     } else {
         return (
             <div className="container">
-                <h2 className="sub-title">Check these featured streams!</h2>
+                <h2 className="sub-title">Check out these featured streams!</h2>
                 <div className="grid">
                     {props.streams.map(s => (
                         <GridItem
